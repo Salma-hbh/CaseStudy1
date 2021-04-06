@@ -1,0 +1,36 @@
+package Classe;
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class essai implements Element{
+	public static void main(String[] args) {
+		Scanner cl = new Scanner(System.in);
+		System.out.println("Entrer le nom du fichier");
+		String nom=cl.next();
+		File f=new File(nom+".txt");
+		
+		boolean b=false;
+		boolean c=false;
+		try {
+			b=f.createNewFile();
+			System.out.println("c'est créé");
+			URI uri=f.toURI();
+			System.out.println(uri);
+			File R=new File(nom+".lnk");
+			
+			try {
+				c=R.createNewFile();
+				URI d=R.toURI();
+				System.out.println("Raccourci créé");
+				System.out.println(d);
+			}catch(IOException ioe) {
+				System.out.println("Ce n'est pas créé"+ioe);
+			}
+		}catch(IOException ioe) {
+			System.out.println("Imp de créer"+ioe);
+		}
+		
+}
+}
